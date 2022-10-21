@@ -5,13 +5,14 @@ import javax.persistence.*;
 @Entity
 @Table (name = "quotes")
 public class Quote {
-    public Long getId() {
-        return id;
-    }
 
-//    not necessary but can keep this func and try breaking the program
+    //    not necessary but can keep this func and try breaking the program
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Id
