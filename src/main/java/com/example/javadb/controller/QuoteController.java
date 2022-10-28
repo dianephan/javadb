@@ -21,13 +21,14 @@ public class QuoteController {
     @GetMapping("/quotes")
 
     public List<Quote> getQuotes(@RequestParam("search") Optional<String> searchParam){
-        return searchParam.map( param->quoteRepository.getContainingQuote(param) )
+        return searchParam
+                .map(quoteRepository::getContainingQuote)
                 .orElse(quoteRepository.findAll());
     }
 
     @GetMapping("/quotes/{quoteId}" )
     public ResponseEntity<String> readQuote(@PathVariable("quoteId") Long id) {
-        return ResponseEntity.of(quoteRepository.findById(id).map(Quote::getQuote));
+        return ResponseEntity.of(quoteRepository.findById(id).map( Quote::getQuote ));
     }
 
     @PostMapping("/quotes")
@@ -41,5 +42,4 @@ public class QuoteController {
     public void deleteQuote(@PathVariable(value = "quoteId") Long id) {
         quoteRepository.deleteById(id);
     }
-
 }
