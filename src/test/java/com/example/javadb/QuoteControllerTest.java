@@ -43,7 +43,9 @@ public class QuoteControllerTest {
         Quote idQuote = new Quote();
         idQuote.setQuote("Quote phrase here");
 
-        Mockito.when(mockRepository.findById(1L)).thenReturn(Optional.of(idQuote));
+        Mockito
+                .when(mockRepository.findById(1L))
+                .thenReturn(Optional.of(idQuote));
         QuoteController quoteController = new QuoteController(mockRepository);
 
         // CALL
